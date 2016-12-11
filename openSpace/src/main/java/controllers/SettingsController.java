@@ -4,18 +4,15 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/index.jsp","/index", "/welcome"})
-public class WelcomeController extends AbstractServlet {
-	private static final long serialVersionUID = -7325170126537075555L;
+@WebServlet(urlPatterns = "/settings")
+public class SettingsController extends AbstractServlet {
+	private static final long serialVersionUID = -231101023174274140L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		forwardToPage("index.jsp", req, resp);
+		forwardToPage("account-settings.jsp", req, resp);
 	}
-
 }

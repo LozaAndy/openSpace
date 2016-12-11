@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="resources/css/bootstrap.css" rel="stylesheet" />
-<link href="resources/css/bootstrap-theme.css" rel="stylesheet" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-	<div class="container">
+
 		<div class="jumbotron">
 			<h3>My friends</h3>
 		</div>
@@ -97,7 +89,7 @@
 										<h1>Dyn</h1>
 									</div>
 								</div></li>
-							<li><img src="https://wowjp.net/avatar/78/311190.png" alt="">
+							<li><img src="http://img-fotki.yandex.ru/get/6736/149341859.20/0_125867_d895c4a8_orig" alt="">
 								<div class="caption">
 									<div class="blur"></div>
 									<div class="caption-text">
@@ -201,19 +193,19 @@
 											</div>
 										</div>
 									</div>
-									<a href="/social/home" class="btn btn-info btn-lg" type="submit">
+									<a href="/home" class="btn btn-info btn-lg" type="submit">
 										<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 										My profile
 									</a>
-									<a href="/social/friends" class="btn btn-success btn-lg" type="submit">
+									<a href="/friends" class="btn btn-success btn-lg" type="submit">
 										<span class="glyphicon glyphicon-heart-empty"
 											aria-hidden="true"></span> My friends
 									</a>
-									<a href="/social/news" class="btn btn-warning btn-lg" type="submit">
+									<a href="/news" class="btn btn-warning btn-lg" type="submit">
 										<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 										News
 									</a>
-									<a href="/social/settings" class="btn btn-default btn-lg" type="submit">
+									<a href="/settings" class="btn btn-default btn-lg" type="submit">
 										<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 										Settings
 									</a>
@@ -224,14 +216,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<footer class="navbar-fixed-bottom">
-		<div class="container">
-			<p class="text-muted">Author: Andy Loza</p>
-		</div>
-	</footer>
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="resources/js/bootstrap.js"></script>
-</body>
-</html>
+	
+	

@@ -1,21 +1,8 @@
-<%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"
-	trimDirectiveWhitespaces="true"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="resources/css/bootstrap.css" rel="stylesheet" />
-<link href="resources/css/bootstrap-theme.css" rel="stylesheet" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-	<div class="container">
+
 		<div class="row">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-				<c:url var="userName" value="/user" ></c:url>
-					<h3 class="panel-title"> ${user.name} </h3>
+					<h3 class="panel-title">Hi, ${user.name}! </h3>
 				</div>
 				<div class="panel-body">
 					<div class="col-lg-8">
@@ -167,19 +154,19 @@
 									</div>
 								</div>
 							</div>
-							<a href="/social/home" class="btn btn-info btn-lg" type="submit">
+							<a href="/home" class="btn btn-info btn-lg" type="submit">
 								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								My profile
 							</a>
-							<a href="/social/friends" class="btn btn-success btn-lg" type="submit">
+							<a href="/friends" class="btn btn-success btn-lg" type="submit">
 								<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
 								My friends
 							</a>
-							<a href="/social/news" class="btn btn-warning btn-lg" type="submit">
+							<a href="/news" class="btn btn-warning btn-lg" type="submit">
 								<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 								News
 							</a>
-							<a href="/social/settings" class="btn btn-default btn-lg" type="submit">
+							<a href="/settings" class="btn btn-default btn-lg" type="submit">
 								<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 								Settings
 							</a>
@@ -188,17 +175,4 @@
 				</div>
 			</div>
 		</div>
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>Copyright &copy; Andy_Loza :)</p>
-				</div>
-			</div>
-			<!-- /.row -->
-		</footer>
-	</div>
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="resources/js/bootstrap.js"></script>
-</body>
-</html>
+	
