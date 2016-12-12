@@ -27,7 +27,7 @@
 				<h3 class="panel-title">All fields are required</h3>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action="/social/" method="post">
+				<form class="form-horizontal" action="/reg/confirm" method="post">
 					<div class="form-group">
 						<label for="inputLogin" class="col-sm-2 control-label">Login</label>
 						<div class="col-sm-10">
