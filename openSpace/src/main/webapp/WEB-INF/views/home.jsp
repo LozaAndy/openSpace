@@ -16,9 +16,7 @@
 		<div class="panel-body">
 			<div class="col-lg-8">
 				<!-- Blog Post -->
-
-				<!-- Why error found when I try to use - <h1>${Post.getSummary(); } ?? </h1> -->
-				<p>${Post.getSummary(); }</p>
+				<h1>${Post.getSummary();}</h1>
 
 				<!-- Need develop logic - go to friend's page or go to home page if current user is post's owner -->
 
