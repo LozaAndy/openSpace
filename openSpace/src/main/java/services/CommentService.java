@@ -1,7 +1,8 @@
 package services;
 
-public interface CommentService extends PostService {
-	
-	// maybe will be deleted
+import models.Comment;
 
+public interface CommentService extends DataService<Comment> {
+
+	// there can be added something special for Comment - for example - validation 
 }

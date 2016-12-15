@@ -1,4 +1,6 @@
-
+<%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"
+	trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 		<div class="jumbotron">
 			<div class="text-center">
 				<h1>Hello, and Welcome!</h1>

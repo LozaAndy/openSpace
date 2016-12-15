@@ -1,13 +1,24 @@
 package models;
 
-public class Post {
+import java.sql.Timestamp;
+
+public class Post {   // DB should be modified - need to add new field - "created": TimeStamp 
 	
 	private int id;
 	private String summary;
 	private String text;
 	private byte[] image;
 	private byte[] video;
+	private Timestamp created;
 	
+	public Timestamp getCreated() {
+		return created;
+	}
+
+	public void setCreated(Timestamp created) {
+		this.created = created;
+	}
+
 	public Post() {
 		// need add logging and change public modifier
 	}

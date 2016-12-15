@@ -1,6 +1,13 @@
-
+<%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"
+	trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="jumbotron">
 	<h3>My friends</h3>
+	
+	<!-- This link should be displayed only if current user is logged in -->
+			<c:if test="${currentUser} != null">
+			<a href ="/logout" class="text-right">Log out</a>
+			</c:if>
 </div>
 <div class="row">
 	<div class="col-lg-8">
@@ -144,8 +151,8 @@
 			</div>
 			<nav aria-label="...">
 				<ul class="pager">
-					<li><a href="#">Previous</a></li>
-					<li><a href="#">Next</a></li>
+					<li><a href="/previous-page">Previous</a></li>
+					<li><a href="/next-page">Next</a></li>
 				</ul>
 			</nav>
 		</div>

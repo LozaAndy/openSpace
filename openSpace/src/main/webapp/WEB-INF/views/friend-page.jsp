@@ -1,4 +1,6 @@
-
+<%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"
+	trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="row">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -6,6 +8,11 @@
 			<!-- This header should display name of friend  -->
 
 			<h3 class="panel-title">${user.name}</h3>
+			
+			<!-- This link should be displayed only if current user is logged in -->
+			<c:if test="${currentUser} != null">
+			<a href ="/logout" class="text-right">Log out</a>
+			</c:if>
 
 		</div>
 		<div class="panel-body">

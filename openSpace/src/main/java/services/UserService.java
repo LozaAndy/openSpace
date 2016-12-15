@@ -1,15 +1,9 @@
 package services;
 
-import java.util.List;
-
 import models.User;
 
-public interface UserService {
+public interface UserService extends DataService<User> {
 	
-	public void addUser();
-	public void updateUser();
-	public User getUser(int id);
-	public List<User> getUserList();
-	public void deleteUser(int id);
+	// there can be added something special for User 
 
 }
