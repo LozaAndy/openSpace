@@ -5,29 +5,30 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Hi, ${user.name}!</h3>
-			
+
 			<!-- This link should be displayed only if current user is logged in -->
 			<c:if test="${currentUser} != null">
-			<a href ="/logout" class="text-right">Log out</a>
+				<a href="/logout" class="text-right">Log out</a>
 			</c:if>
-			
+
 		</div>
 		<div class="panel-body">
 			<div class="col-lg-8">
 				<!-- Blog Post -->
-				
+
 				<!-- Why error found when I try to use - <h1>${Post.getSummary(); } ?? </h1> -->
-		<p>${Post.getSummary(); }</p>
-				
+				<p>${Post.getSummary(); }</p>
+
 				<!-- Need develop logic - go to friend's page or go to home page if current user is post's owner -->
-				
+
 				<p class="lead">
 					by <a href="#">Andy</a>
 				</p>
 				<hr>
 				<!-- Date/Time -->
 				<p>
-					<span class="glyphicon glyphicon-time"></span> Posted on ${Post.getCreated(); }
+					<span class="glyphicon glyphicon-time"></span> Posted on
+					${Post.getCreated(); }
 				</p>
 				<hr>
 				<!-- Preview Image -->
@@ -36,13 +37,16 @@
 					alt="">
 				<hr>
 				<!-- Post Content -->
-				<p class="lead"></p>
+				<p class="lead">${Post.text}</p>
 				<hr>
+
+
 				<!-- Blog Comments -->
 				<!-- Comments Form -->
 				<div class="well">
 					<h4>Leave a Comment:</h4>
-					<form role="form" class="form-group" action="/add-comment" method="post">
+					<form role="form" class="form-group" action="/add-comment"
+						method="post">
 						<div>
 							<textarea class="form-control" rows="3"></textarea>
 						</div>
@@ -112,9 +116,9 @@
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 						Add post
 					</button>
-					
+
 					<!-- Modal  need more investigation about sending data from modal window to controller-->
-					
+
 					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel">
 						<div class="modal-dialog" role="document">
