@@ -2,13 +2,29 @@ package models;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "topics")
 public class Post {   // DB should be modified - need to add new field - "created": TimeStamp 
 	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	@Column(name = "summary")
 	private String summary;
+	@Column(name = "text")
 	private String text;
+	@Column(name = "image")
 	private byte[] image;
+	@Column(name = "video")
 	private byte[] video;
+	@Column(name = "created")
 	private Timestamp created;
 	
 	public Timestamp getCreated() {
