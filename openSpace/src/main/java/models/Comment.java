@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "comments", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class Comment {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
