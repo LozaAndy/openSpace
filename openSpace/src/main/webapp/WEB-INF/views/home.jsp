@@ -7,16 +7,16 @@
 		<div class="panel-heading">
 			<h3 class="panel-title">Hi, ${user.name}!</h3>
 
-			<!-- This link should be displayed only if current user is logged in -->
+			<!-- This link should be displayed only if current user is logged in 
 			<c:if test="${currentUser} != null">
 				<a href="/logout" class="text-right">Log out</a>
-			</c:if>
+			</c:if> -->
 
 		</div>
 		<div class="panel-body">
 			<div class="col-lg-8">
 				<!-- Blog Post -->
-				<h1>${Post.getSummary();}</h1>
+				<h1>${Post.getSummary()}</h1>
 
 				<!-- Need develop logic - go to friend's page or go to home page if current user is post's owner -->
 
@@ -27,7 +27,7 @@
 				<!-- Date/Time -->
 				<p>
 					<span class="glyphicon glyphicon-time"></span> Posted on
-					${Post.getCreated(); }
+					${Post.getCreated() }
 				</p>
 				<hr>
 				<!-- Preview Image -->
@@ -36,7 +36,7 @@
 					alt="">
 				<hr>
 				<!-- Post Content -->
-				<p class="lead">${Post.text}</p>
+				<p class="lead">${Post.getText()}</p>
 				<hr>
 
 
