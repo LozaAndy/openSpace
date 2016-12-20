@@ -5,7 +5,7 @@
 	<artifactId>openSpace</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>openSpace Maven Webapp</name>
+	<name>gentle-coast-54961</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -96,6 +96,16 @@
 					<downloadJavadocs>true</downloadJavadocs>
 					<wtpversion>2.0</wtpversion>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<configuration>
+					<appName>gentle-coast-54961</appName>
+				</configuration>
+				
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>1.1.2</version>
 			</plugin>
 
 		</plugins>
