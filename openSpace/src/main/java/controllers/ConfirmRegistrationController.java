@@ -15,7 +15,7 @@ public class ConfirmRegistrationController extends AbstractServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// user data should be validate and put into DB - after that - forward to welcome page
 		
-		forwardToPage("index.jsp", req, resp);
+		resp.sendRedirect("index.jsp");
 	}
 
 }
