@@ -2,6 +2,8 @@ package serviceImpl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -21,8 +23,14 @@ public class UserServiceImpl implements UserService {
 	
 
 	
-	public void addData() {
+	public void addData(HttpServletRequest req) {
 		session.beginTransaction();
+		user.setFirstName(req.getParameter("inputFirstName"));
+		user.setLastName(req.getParameter("inputLastName"));
+		user.setEmail(req.getParameter("inputEmail"));
+		user.setLogin(req.getParameter("inputLogin"));
+		user.setPassword(req.getParameter("inputPassword1"));
+		
 		session.save(user);
 		session.getTransaction().commit();
 		// need to add logging

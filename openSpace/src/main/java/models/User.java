@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -15,9 +16,11 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "account", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class User {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
 	@Column(name = "id")
-	private int id;
+	@SequenceGenerator(name="acc_seq", sequenceName="account_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="acc_seq")
+	private long id;
 	@Column(name ="first_name")
 	private String firstName;
 	@Column(name = "last_name")
@@ -38,7 +41,7 @@ public class User {
 		// change the modifier public to... ?
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
