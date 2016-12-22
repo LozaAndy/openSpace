@@ -13,8 +13,7 @@ public class UserServiceImpl implements DataService<User> {
 
 	User user = new User();
 
-	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory(); // should be created ONLY one time - now is created in all services - need modificate!!
 	Session session = sessionFactory.getCurrentSession();
 
 	public void addData(HttpServletRequest req) {
