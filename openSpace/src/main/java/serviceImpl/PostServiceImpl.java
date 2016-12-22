@@ -19,6 +19,7 @@ public class PostServiceImpl implements DataService<Post> {
 
 	public void addData(HttpServletRequest req) {
 	
+		// req.getSession().getAttribute("currentUser"); - there I planning to save info about current User
 		session.beginTransaction();
 		Post post = new Post();
 		post.setSummary(req.getParameter("inputSummary"));

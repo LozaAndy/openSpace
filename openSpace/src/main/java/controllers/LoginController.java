@@ -15,6 +15,9 @@ public class LoginController extends AbstractServlet {
 	// password
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// call UserService and validate credentials --> DataService userService = new UserServiceImpl();
+		// HttpSession.setAttribute("currentUser", currentUser);
+		
 		resp.sendRedirect("/home");
 	}
 
