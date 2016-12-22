@@ -12,25 +12,24 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "comments", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name = "comment", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
 public class Comment {
 
-	@Id 
-	@SequenceGenerator(name="comment_seq", sequenceName="comments_seq")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="comment_seq")
-	@Column(name = "id")
+	@Id
+	@SequenceGenerator(name = "comm_seq", sequenceName = "comment_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comm_seq")
 	private long id;
-	@Column(name = "created")
+
 	private Timestamp created;
-	@Column(name = "id_account")
-	private int idAccount;
-	@Column(name = "text")
 	private String text;
-	@Column(name = "id_post")
-	private int idPost;
-	@Column(name = "avatar")
 	private byte[] avatar;
-	
+
+	@Column(name = "id_post")
+	private long idPost;
+
+	@Column(name = "id_account")
+	private long idAccount;
+
 	public Comment() {
 		// need add logging and change public modifier
 	}
@@ -39,7 +38,7 @@ public class Comment {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -51,28 +50,12 @@ public class Comment {
 		this.created = created;
 	}
 
-	public int getIdAccount() {
-		return idAccount;
-	}
-
-	public void setIdAccount(int idAccount) {
-		this.idAccount = idAccount;
-	}
-
 	public String getText() {
 		return text;
 	}
 
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	public int getIdPost() {
-		return idPost;
-	}
-
-	public void setIdPost(int idPost) {
-		this.idPost = idPost;
 	}
 
 	public byte[] getAvatar() {
@@ -82,8 +65,21 @@ public class Comment {
 	public void setAvatar(byte[] avatar) {
 		this.avatar = avatar;
 	}
-	
-	
-	
-	
+
+	public long getIdPost() {
+		return idPost;
+	}
+
+	public void setIdPost(long idPost) {
+		this.idPost = idPost;
+	}
+
+	public long getIdAccount() {
+		return idAccount;
+	}
+
+	public void setIdAccount(long idAccount) {
+		this.idAccount = idAccount;
+	}
+
 }
