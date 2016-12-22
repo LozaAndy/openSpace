@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 		session.save(user);
 		session.getTransaction().commit();
 		// need to add logging
-		session.close();        // probably should use sessionFactory.close();
+		session.close();        // probably should use sessionFactory.close();??
 
 	}
 

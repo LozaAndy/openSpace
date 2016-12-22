@@ -7,16 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "topics", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name = "posts", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class Post {   // DB should be modified - need to add new field - "created": TimeStamp 
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@SequenceGenerator(name="post_seq", sequenceName="posts_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="post_seq")
 	@Column(name = "id")
-	private int id;
+	private long id;
 	@Column(name = "summary")
 	private String summary;
 	@Column(name = "text")
@@ -40,7 +43,7 @@ public class Post {   // DB should be modified - need to add new field - "create
 		// need add logging and change public modifier
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -14,9 +15,11 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "comments", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
 public class Comment {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@SequenceGenerator(name="comment_seq", sequenceName="comments_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="comment_seq")
 	@Column(name = "id")
-	private int id;
+	private long id;
 	@Column(name = "created")
 	private Timestamp created;
 	@Column(name = "id_account")
@@ -32,7 +35,7 @@ public class Comment {
 		// need add logging and change public modifier
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
