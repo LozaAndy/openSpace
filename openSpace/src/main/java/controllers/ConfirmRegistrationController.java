@@ -7,8 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.User;
 import serviceImpl.UserServiceImpl;
-import services.UserService;
+import services.DataService;
+
 
 @WebServlet(urlPatterns="/reg/confirm")
 public class ConfirmRegistrationController extends AbstractServlet {
@@ -17,7 +19,7 @@ public class ConfirmRegistrationController extends AbstractServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		UserService userService = new UserServiceImpl();
+		DataService<User> userService = new UserServiceImpl();
 		userService.addData(req);
 		
 		resp.sendRedirect("/welcome");
