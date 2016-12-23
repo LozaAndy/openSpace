@@ -28,14 +28,14 @@
 								<div class="form-group">
 									<label for="inputLogin" class="col-sm-2 control-label">Login</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputLogin"
+										<input type="text" name="inputLogin" class="form-control" id="inputLogin"
 											placeholder="login">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="inputPassword" class="col-sm-2 control-label">Password</label>
 									<div class="col-sm-10">
-										<input type="password" class="form-control" id="inputPassword"
+										<input type="password" name="inputPassword" class="form-control" id="inputPassword"
 											placeholder="password">
 									</div>
 								</div>

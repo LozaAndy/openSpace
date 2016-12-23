@@ -50,4 +50,9 @@ public class PostServiceImpl implements DataService<Post> {
 		
 	}
 
+	public Object getData(HttpServletRequest req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

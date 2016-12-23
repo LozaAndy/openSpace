@@ -11,5 +11,6 @@ public interface DataService<T> {
 	public Object getByCredentials(String login, String password);
 	public List<T> getAllData();
 	public void deleteData(long id);
+	public Object getData(HttpServletRequest req);
 
 }

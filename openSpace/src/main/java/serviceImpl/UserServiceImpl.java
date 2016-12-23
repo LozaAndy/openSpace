@@ -1,16 +1,23 @@
 package serviceImpl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import meta.models.User_;
 import models.User;
 import services.DataService;
 import utils.HibernateUtils;
+import utils.PersistenceManager;
 
 public class UserServiceImpl implements DataService<User> {
 
@@ -43,10 +50,28 @@ public class UserServiceImpl implements DataService<User> {
 
 	}
 
-	public Object getData(String login, String password) { // need more
-															// investigations
+	public Object getData(HttpServletRequest req) {
 		session.beginTransaction();
-				
+		CriteriaBuilder builder = PersistenceManager.INSTANCE.getEntityManager().getCriteriaBuilder();
+		CriteriaQuery<String> criteria = builder.createQuery(String.class);
+		Root<User> root = criteria.from(User.class);
+
+		Path<Long> idPath = root.get(User_.id);
+		Path<String> firstNamePath = root.get(User_.firstName);
+		Path<String> lastNamePath = root.get(User_.lastName);
+		Path<String> loginPath = root.get(User_.login);
+		Path<String> passwordPath = root.get(User_.password);
+		Path<String> emailPath = root.get(User_.email);
+		Path<Timestamp> dateOfBirthPath = root.get(User_.dateOfBirth);
+		Path<Byte[]> avatarPath = root.get(User_.avatar);
+
+		criteria.multiselect(builder.construct(User.class, idPath, firstNamePath, lastNamePath, loginPath, passwordPath,
+				emailPath, dateOfBirthPath, avatarPath));
+		criteria.where(builder.equal(root.get(User_.login), req.getParameter("inputLogin")));
+		criteria.where(builder.equal(root.get(User_.password), req.getParameter("inputPassword")));
+		User user = (User) PersistenceManager.INSTANCE.getEntityManager().createQuery(criteria);
+		session.getTransaction().commit();
+		session.close();
 		return user;
 	}
 
