@@ -3,6 +3,9 @@ package serviceImpl;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import models.User;
@@ -13,28 +16,37 @@ public class UserServiceImpl implements DataService<User> {
 
 	User user = new User();
 
-	SessionFactory sessionFactory = HibernateUtils.getSessionFactory(); // should be created ONLY one time - now is created in all services - need modificate!!
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory(); // should
+																		// be
+																		// created
+																		// ONLY
+																		// ONE
+																		// TIME!!
 	Session session = sessionFactory.getCurrentSession();
 
 	public void addData(HttpServletRequest req) {
-		session.beginTransaction();
-		user.setFirstName(req.getParameter("inputFirstName"));
-		user.setLastName(req.getParameter("inputLastName"));
-		user.setEmail(req.getParameter("inputEmail"));
-		user.setLogin(req.getParameter("inputLogin"));
-		user.setPassword(req.getParameter("inputPassword1"));
-
-		session.save(user);
-		session.getTransaction().commit();
-		// need to add logging
-		session.close(); // probably should use sessionFactory.close();??
+		try {
+			session.beginTransaction();
+			user.setFirstName(req.getParameter("inputFirstName"));
+			user.setLastName(req.getParameter("inputLastName"));
+			user.setEmail(req.getParameter("inputEmail"));
+			user.setLogin(req.getParameter("inputLogin"));
+			user.setPassword(req.getParameter("inputPassword1"));
+			session.save(user);
+			session.getTransaction().commit();
+			// need to add logging
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
 
 	}
 
 	public Object getData(String login, String password) { // need more
 															// investigations
 		session.beginTransaction();
-		
+				
 		return user;
 	}
 
