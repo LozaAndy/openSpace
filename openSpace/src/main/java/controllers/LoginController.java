@@ -6,10 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import services.ServiceManager;
+import servicesImpl.ServiceManagerImpl;
 
-import models.User;
-import serviceImpl.UserServiceImpl;
-import services.DataService;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends AbstractServlet {
@@ -19,8 +18,8 @@ public class LoginController extends AbstractServlet {
 	// password
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		DataService<User> userService = new UserServiceImpl();
-		if(userService.getData(req) != null){
+		ServiceManager serviceManager = new ServiceManagerImpl();
+		if(serviceManager.getUserService().getUserByCredentials(req.getParameter("inputLogin"), req.getParameter("inputPassword")) != null){
 				resp.sendRedirect("/home");
 				}
 		else{

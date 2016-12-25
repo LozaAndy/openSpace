@@ -7,9 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Post;
-import serviceImpl.PostServiceImpl;
-import services.DataService;
+
+
 
 @WebServlet(urlPatterns = "/add-post")
 public class AddPostController extends HttpServlet {
@@ -18,8 +17,8 @@ public class AddPostController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		DataService<Post> postService = new PostServiceImpl();
-		postService.addData(req);
+		//DataService<Post> postService = new PostServiceOld();
+		//postService.addData(req);
 	}
 
 }

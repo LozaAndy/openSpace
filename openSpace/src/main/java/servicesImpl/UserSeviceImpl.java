@@ -1,4 +1,4 @@
-package serviceImpl;
+package servicesImpl;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -15,23 +15,22 @@ import org.hibernate.SessionFactory;
 
 import meta.models.User_;
 import models.User;
-import services.DataService;
+import services.UserService;
 import utils.HibernateUtils;
 import utils.PersistenceManager;
 
-public class UserServiceImpl implements DataService<User> {
-
+public class UserSeviceImpl implements UserService {
+	
 	User user = new User();
 
-	SessionFactory sessionFactory = HibernateUtils.getSessionFactory(); // should
-																		// be
-																		// created
-																		// ONLY
-																		// ONE
-																		// TIME!!
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory(); // should be created ONLY ONE TIME!!
 	Session session = sessionFactory.getCurrentSession();
+	
+	 UserSeviceImpl() {       // package level access
+		// need add logging
+	}
 
-	public void addData(HttpServletRequest req) {
+	public void createUser(HttpServletRequest req) {
 		try {
 			session.beginTransaction();
 			user.setFirstName(req.getParameter("inputFirstName"));
@@ -50,7 +49,12 @@ public class UserServiceImpl implements DataService<User> {
 
 	}
 
-	public Object getData(HttpServletRequest req) {
+	public User getUserById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public User getUserByCredentials(String login, String password) {
 		session.beginTransaction();
 		CriteriaBuilder builder = PersistenceManager.INSTANCE.getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<String> criteria = builder.createQuery(String.class);
@@ -67,32 +71,22 @@ public class UserServiceImpl implements DataService<User> {
 
 		criteria.multiselect(builder.construct(User.class, idPath, firstNamePath, lastNamePath, loginPath, passwordPath,
 				emailPath, dateOfBirthPath, avatarPath));
-		criteria.where(builder.equal(root.get(User_.login), req.getParameter("inputLogin")));
-		criteria.where(builder.equal(root.get(User_.password), req.getParameter("inputPassword")));
+		criteria.where(builder.equal(root.get(User_.login), login));
+		criteria.where(builder.equal(root.get(User_.password), password));
 		User user = (User) PersistenceManager.INSTANCE.getEntityManager().createQuery(criteria);
 		session.getTransaction().commit();
 		session.close();
 		return user;
 	}
 
-	public List<User> getAllData() {
+	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void deleteData(long id) {
+	public void deleteUser(long id) {
 		// TODO Auto-generated method stub
 
-	}
-
-	public Object getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getByCredentials(String login, String password) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
