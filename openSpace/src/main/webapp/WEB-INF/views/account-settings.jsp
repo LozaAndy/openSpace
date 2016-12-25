@@ -1,6 +1,14 @@
-
+<%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"
+	trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 		<div class="jumbotron">
 			<h3>My account</h3>
+			
+			<!-- This link should be displayed only if current user is logged in -->
+			<c:if test="${currentUser} != null">
+			<a href ="/logout" class="text-right">Log out</a>
+			</c:if>
+			
 		</div>
 		<div class="row">
 			<div class="col-lg-8">
@@ -42,7 +50,7 @@
 											<h4 class="modal-title" id="myModalLabel">Edit profile</h4>
 										</div>
 										<div class="modal-body">
-											<form class="form-horizontal">
+											<form class="form-horizontal" action="/confirm/changes" method="post">
 												<div class="form-group">
 													<label for="inputFirstName" class="col-sm-2 control-label">First
 														name</label>
@@ -101,7 +109,7 @@
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-primary">Save
+											<button type="submit" class="btn btn-primary">Save
 												changes</button>
 										</div>
 									</div>
@@ -119,9 +127,9 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-6">
-							<button class="btn btn-default" type="button">
+							<a href="/change/photo" class="btn btn-default" type="button">
 								<span class="glyphicon glyphicon-picture"></span> Change photo
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>

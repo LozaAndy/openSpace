@@ -2,24 +2,43 @@ package models;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+@Entity
+@Table(name = "comment", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
 public class Comment {
 
-	private int id;
+	@Id
+	@SequenceGenerator(name = "comm_seq", sequenceName = "comment_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comm_seq")
+	private long id;
+
 	private Timestamp created;
-	private int idAccount;
 	private String text;
-	private int idPost;
 	private byte[] avatar;
-	
+
+	@Column(name = "id_post")
+	private long idPost;
+
+	@Column(name = "id_account")
+	private long idAccount;
+
 	public Comment() {
 		// need add logging and change public modifier
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -31,28 +50,12 @@ public class Comment {
 		this.created = created;
 	}
 
-	public int getIdAccount() {
-		return idAccount;
-	}
-
-	public void setIdAccount(int idAccount) {
-		this.idAccount = idAccount;
-	}
-
 	public String getText() {
 		return text;
 	}
 
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	public int getIdPost() {
-		return idPost;
-	}
-
-	public void setIdPost(int idPost) {
-		this.idPost = idPost;
 	}
 
 	public byte[] getAvatar() {
@@ -62,8 +65,21 @@ public class Comment {
 	public void setAvatar(byte[] avatar) {
 		this.avatar = avatar;
 	}
-	
-	
-	
-	
+
+	public long getIdPost() {
+		return idPost;
+	}
+
+	public void setIdPost(long idPost) {
+		this.idPost = idPost;
+	}
+
+	public long getIdAccount() {
+		return idAccount;
+	}
+
+	public void setIdAccount(long idAccount) {
+		this.idAccount = idAccount;
+	}
+
 }

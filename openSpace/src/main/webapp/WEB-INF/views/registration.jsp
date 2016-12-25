@@ -1,4 +1,6 @@
-
+<%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"
+	trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 		<div class="jumbotron text-center">
 			<div class="media">
 				<div class="media-left">
@@ -27,18 +29,18 @@
 				<h3 class="panel-title">All fields are required</h3>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action="/social/" method="post">
+				<form class="form-horizontal" action="/reg/confirm" method="post">
 					<div class="form-group">
 						<label for="inputLogin" class="col-sm-2 control-label">Login</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputLogin"
+							<input type="text" name="inputLogin" class="form-control" 
 								placeholder="login">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="inputPassword1"
+							<input type="password" name="inputPassword1" class="form-control" id="inputPassword1"
 								placeholder="password">
 						</div>
 					</div>
@@ -46,7 +48,7 @@
 						<label for="inputConfPassword" class="col-sm-2 control-label">Confirm
 							password</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="inputPassword2"
+							<input type="password" name="inputPassword2" class="form-control" id="inputPassword2"
 								placeholder="password">
 						</div>
 					</div>
@@ -54,22 +56,22 @@
 						<label for="inputFirstName" class="col-sm-2 control-label">First
 							Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputFirstName"
+							<input type="text" name="inputFirstName" class="form-control" id="inputFirstName"
 								placeholder="first name">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputLastName" class="col-sm-2 control-label">Last
+						<label for="inputLastName"  class="col-sm-2 control-label">Last
 							Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputLastName"
+							<input type="text" name="inputLastName" class="form-control" id="inputLastName"
 								placeholder="last name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="inputEmail"
+							<input type="email" name="inputEmail" class="form-control" id="inputEmail"
 								placeholder="email">
 						</div>
 					</div>

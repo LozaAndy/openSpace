@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Connection settings -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://ec2-23-21-184-181.compute-1.amazonaws.com:5432/d88dgrso7lov7d?sslmode=require</property>
+		<property name="hibernate.connection.username">wwmylcscyusggt</property>
+		<property name="hibernate.connection.password">2644c893f57e74af955092376883c39926f45a88c53a72489760d70da44f8384</property>
+		
+
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- Mapping with model class containing annotations -->
+		<mapping class="models.User" />
+		<mapping class="models.Post" />
+		<mapping class="models.Comment" />
+
+
+	</session-factory>
+</hibernate-configuration>

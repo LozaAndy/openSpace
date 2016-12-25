@@ -5,7 +5,7 @@
 	<artifactId>openSpace</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>openSpace Maven Webapp</name>
+	<name>gentle-coast-54961</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -23,6 +23,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${javax.servlet-api.version}</version>
@@ -35,6 +41,8 @@
 			<version>1.2</version>
 		</dependency>
 
+		<!--hibernate dependencies -->
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -43,20 +51,14 @@
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.6-Final</version>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.2.5.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.1.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.3.4.Final</version>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>1.0.0.Final</version>
 		</dependency>
 
 		<dependency>
@@ -64,11 +66,18 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.4.1212.jre7</version>
 		</dependency>
+		<!--hibernate dependencies -->
 
 		<dependency>
 			<groupId>commons-dbutils</groupId>
 			<artifactId>commons-dbutils</artifactId>
 			<version>1.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
 		</dependency>
 
 
@@ -96,6 +105,16 @@
 					<downloadJavadocs>true</downloadJavadocs>
 					<wtpversion>2.0</wtpversion>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<configuration>
+					<appName>gentle-coast-54961</appName>
+				</configuration>
+
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>1.1.2</version>
 			</plugin>
 
 		</plugins>
