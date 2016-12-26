@@ -6,9 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import exceptions.ValidationException;
 import services.ServiceManager;
 import servicesImpl.ServiceManagerImpl;
-
 
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends AbstractServlet {
@@ -19,11 +20,15 @@ public class LoginController extends AbstractServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServiceManager serviceManager = new ServiceManagerImpl();
-		if(serviceManager.getUserService().getUserByCredentials(req.getParameter("inputLogin"), req.getParameter("inputPassword")) != null){
+		try {
+			if (serviceManager.getUserService().getUserByCredentials(req.getParameter("inputLogin"),
+					req.getParameter("inputPassword")) != null) {
 				resp.sendRedirect("/home");
-				}
-		else{
-			resp.sendRedirect("/welcome");
+			}
+		} catch (ValidationException e) {
+			req.setAttribute("validationError", e.getMessage());
+			// need add logging
+			forwardToPage("index.jsp", req, resp);
 		}
 	}
 

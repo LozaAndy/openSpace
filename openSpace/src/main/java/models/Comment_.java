@@ -1,4 +1,4 @@
-package meta.models;
+package models;
 
 import java.sql.Timestamp;
 

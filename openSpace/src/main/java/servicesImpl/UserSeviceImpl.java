@@ -1,11 +1,13 @@
 package servicesImpl;
 
-import java.sql.Timestamp;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,20 +15,26 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import meta.models.User_;
+import exceptions.ValidationException;
 import models.User;
+import models.User_;
 import services.UserService;
 import utils.HibernateUtils;
 import utils.PersistenceManager;
 
 public class UserSeviceImpl implements UserService {
-	
+
 	User user = new User();
 
-	SessionFactory sessionFactory = HibernateUtils.getSessionFactory(); // should be created ONLY ONE TIME!!
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory(); // should
+																		// be
+																		// created
+																		// ONLY
+																		// ONE
+																		// TIME!!
 	Session session = sessionFactory.getCurrentSession();
-	
-	 UserSeviceImpl() {       // package level access
+
+	UserSeviceImpl() { // package level access
 		// need add logging
 	}
 
@@ -54,34 +62,40 @@ public class UserSeviceImpl implements UserService {
 		return null;
 	}
 
-	public User getUserByCredentials(String login, String password) {
-		session.beginTransaction();
-		CriteriaBuilder builder = PersistenceManager.INSTANCE.getEntityManager().getCriteriaBuilder();
-		CriteriaQuery<String> criteria = builder.createQuery(String.class);
-		Root<User> root = criteria.from(User.class);
-
-		Path<Long> idPath = root.get(User_.id);
-		Path<String> firstNamePath = root.get(User_.firstName);
-		Path<String> lastNamePath = root.get(User_.lastName);
-		Path<String> loginPath = root.get(User_.login);
-		Path<String> passwordPath = root.get(User_.password);
-		Path<String> emailPath = root.get(User_.email);
-		Path<Timestamp> dateOfBirthPath = root.get(User_.dateOfBirth);
-		Path<Byte[]> avatarPath = root.get(User_.avatar);
-
-		criteria.multiselect(builder.construct(User.class, idPath, firstNamePath, lastNamePath, loginPath, passwordPath,
-				emailPath, dateOfBirthPath, avatarPath));
-		criteria.where(builder.equal(root.get(User_.login), login));
-		criteria.where(builder.equal(root.get(User_.password), password));
-		User user = (User) PersistenceManager.INSTANCE.getEntityManager().createQuery(criteria);
-		session.getTransaction().commit();
-		session.close();
+	public User getUserByCredentials(String login, String password) throws ValidationException {
+		try {
+			session.beginTransaction();
+			CriteriaBuilder builder = PersistenceManager.INSTANCE.getEntityManager().getCriteriaBuilder();
+			CriteriaQuery<User> criteria = builder.createQuery(User.class);
+			Root<User> root = criteria.from(User.class);
+			
+			List<Predicate> predicates = new ArrayList<Predicate>();
+			predicates.add(builder.like(root.get(User_.login), login));
+			predicates.add(builder.like(root.get(User_.password), password));
+				
+			criteria.where(predicates.toArray(new Predicate[]{}));
+					
+			user = PersistenceManager.INSTANCE.getEntityManager().createQuery(criteria).getSingleResult();
+			session.getTransaction().commit();
+			session.close();
+		} catch (NoResultException e) {
+			throw new ValidationException("Bad credentials");
+					}
 		return user;
 	}
 
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = new ArrayList<User>();
+		session.beginTransaction();
+		CriteriaBuilder builder = PersistenceManager.INSTANCE.getEntityManager().getCriteriaBuilder();
+		CriteriaQuery<User> criteria = builder.createQuery(User.class);
+		Root<User> root = criteria.from(User.class);
+		
+		criteria.select(root);
+		users.addAll(PersistenceManager.INSTANCE.getEntityManager().createQuery(criteria).getResultList());
+		session.getTransaction().commit();
+		session.close();
+		return users;
 	}
 
 	public void deleteUser(long id) {

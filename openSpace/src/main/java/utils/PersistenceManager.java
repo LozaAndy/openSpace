@@ -12,7 +12,7 @@ public enum PersistenceManager {
 	
 	private PersistenceManager() {
 	   
-	    emFactory = Persistence.createEntityManagerFactory("MeineJpaPU");
+	    emFactory = Persistence.createEntityManagerFactory("MyPersistence");
 	  }
 	
 	 public EntityManager getEntityManager() {
