@@ -121,47 +121,51 @@
 					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel">
 						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<h4 class="modal-title" id="myModalLabel">New post</h4>
-								</div>
-								<div class="modal-body">
-									<span>Title</span> <input type="text" class="form-control"
-										id="inputTitle" placeholder="">
-									<hr>
-									<form role="form" action="/add-post" method="post">
+							<form class="form-horizontal" role="form" action="/add-post"
+								method="post">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel">New post</h4>
+									</div>
+
+									<div class="modal-body">
+										<span>Title</span> <input name="inputSummary" type="text" class="form-control"
+											id="inputTitle" placeholder="">
+										<hr>
+
 										<div class="form-group">
-											<textarea class="form-control" rows="3"></textarea>
+											<textarea name="inputText" class="form-control" rows="3"></textarea>
 										</div>
-									</form>
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Cancel</button>
+										<button type="submit" class="btn btn-primary">Save</button>
+									</div>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Cancel</button>
-									<button type="submit" class="btn btn-primary">Save</button>
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
-					<a href="/home" class="btn btn-info btn-lg" type="submit"> <span
-						class="glyphicon glyphicon-user" aria-hidden="true"></span> My
-						profile
-					</a> <a href="/friends" class="btn btn-success btn-lg" type="submit">
-						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-						My friends
-					</a> <a href="/news" class="btn btn-warning btn-lg" type="submit">
-						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-						News
-					</a> <a href="/settings" class="btn btn-default btn-lg" type="submit">
-						<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-						Settings
-					</a>
 				</div>
+				<a href="/home" class="btn btn-info btn-lg" type="submit"> <span
+					class="glyphicon glyphicon-user" aria-hidden="true"></span> My
+					profile
+				</a> <a href="/friends" class="btn btn-success btn-lg" type="submit">
+					<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+					My friends
+				</a> <a href="/news" class="btn btn-warning btn-lg" type="submit"> <span
+					class="glyphicon glyphicon-th-list" aria-hidden="true"></span> News
+				</a> <a href="/settings" class="btn btn-default btn-lg" type="submit">
+					<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+					Settings
+				</a>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

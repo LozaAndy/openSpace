@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import exceptions.ValidationException;
+import models.User;
 import services.ServiceManager;
 import servicesImpl.ServiceManagerImpl;
 
@@ -21,8 +23,14 @@ public class LoginController extends AbstractServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServiceManager serviceManager = new ServiceManagerImpl();
 		try {
-			if (serviceManager.getUserService().getUserByCredentials(req.getParameter("inputLogin"),
-					req.getParameter("inputPassword")) != null) {
+			User user = serviceManager.getUserService().getUserByCredentials(req.getParameter("inputLogin"),
+					req.getParameter("inputPassword"));
+			
+			
+			if ( user != null) {
+				
+				req.getSession().setAttribute("currentUser", user );
+				
 				resp.sendRedirect("/home");
 			}
 		} catch (ValidationException e) {

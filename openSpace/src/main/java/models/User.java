@@ -1,12 +1,13 @@
 package models;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,18 +42,18 @@ public class User {
 	@Column(name = "date_of_birth")
 	private Timestamp dateOfBirth;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Post> posts = new ArrayList<Post>();
+	@OneToMany( mappedBy="owner", fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Post> posts = new HashSet<Post>();
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Comment> comments = new ArrayList<Comment>();
+	private Set<Comment> comments = new HashSet<Comment>(0);
 			
-	public List<Post> getPosts() {
-		return posts;
+	public Set<Post> getPosts() {
+		return this.posts;
 	}
 	
-	public List<Comment> getComments() {
-		return comments;
+	public Set<Comment> getComments() {
+		return this.comments;
 	}
 
 	public User() {

@@ -20,5 +20,6 @@ public class Post_ {
 	public static volatile SingularAttribute<Post, Timestamp> created;
 	public static volatile SingularAttribute<Post, Long> idAccount;
 	public static volatile SetAttribute<Post, Comment> comments;
+	public static volatile SingularAttribute<Post, User> owner;
 
 }
