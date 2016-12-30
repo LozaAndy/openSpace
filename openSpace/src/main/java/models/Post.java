@@ -1,8 +1,8 @@
 package models;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,8 +22,8 @@ import javax.persistence.UniqueConstraint;
 public class Post { 
 
 	@Id
-	@SequenceGenerator(name = "pst_seq", sequenceName = "post_seq")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pst_seq")
+	@SequenceGenerator(name = "acc_seq", sequenceName = "account_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "acc_seq")   // using this sequence for solving issue with generation id in Post 
 	private long id;
 
 	private String summary;
@@ -48,7 +48,7 @@ public class Post {
 
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Comment> comments = new ArrayList<Comment>();
+	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public Post() {
 		// need add logging and change public modifier
@@ -104,7 +104,7 @@ public class Post {
 
 	
 
-	public List<Comment> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
 

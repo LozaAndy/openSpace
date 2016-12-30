@@ -25,7 +25,7 @@ public class AddPostController extends AbstractServlet {
 			e.printStackTrace();
 		}
 		
-		forwardToPage("home.jsp", req, resp);
+		resp.sendRedirect("/home");
 	}
 
 }

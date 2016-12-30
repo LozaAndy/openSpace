@@ -10,7 +10,7 @@ import models.Post;
 public interface PostService {
 
 	public void createPost(HttpServletRequest req) throws OperationException;
-	public Post getPostById(long id);
-	public Set<Post> getAllPosts();
-	public void deletePost(long id);
+	public Post getPostById(long id) throws OperationException;
+	public Set<Post> getAllPosts(long id) throws OperationException;
+	public void deletePost(Post post) throws OperationException;
 }

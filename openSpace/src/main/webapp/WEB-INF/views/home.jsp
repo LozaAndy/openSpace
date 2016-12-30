@@ -1,11 +1,16 @@
 <%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"
 	trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.Set"  %>
+<%@ page import="models.User"  %>
+<%@ page import="models.Post"  %>
+
+
 
 <div class="row">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">Hi, ${user.name}!</h3>
+			<h3 class="panel-title">Hi, ${currentUser.getFirstName()}!</h3>
 
 			<!-- This link should be displayed only if current user is logged in 
 			<c:if test="${currentUser} != null">
@@ -15,31 +20,14 @@
 		</div>
 		<div class="panel-body">
 			<div class="col-lg-8">
-				<!-- Blog Post -->
-				<h1>${Post.getSummary()}</h1>
-
-				<!-- Need develop logic - go to friend's page or go to home page if current user is post's owner -->
-
-				<p class="lead">
-					by <a href="#">Andy</a>
-				</p>
-				<hr>
-				<!-- Date/Time -->
-				<p>
-					<span class="glyphicon glyphicon-time"></span> Posted on
-					${Post.getCreated() }
-				</p>
-				<hr>
-				<!-- Preview Image -->
-				<img class="img-responsive"
-					src="https://friends-brandmanualswede.netdna-ssl.com/wp-content/uploads/2014/09/friends-storre.png"
-					alt="">
-				<hr>
-				<!-- Post Content -->
-				<p class="lead">${Post.getText()}</p>
-				<hr>
-
-
+		<c:forEach var="post"  items="${posts }">
+		<hr>
+		<h1> ${post.getSummary() } </h1>
+		<hr>
+		<p>  ${post.getText() }  </p>
+		<hr>
+		
+		</c:forEach>
 				<!-- Blog Comments -->
 				<!-- Comments Form -->
 				<div class="well">

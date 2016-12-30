@@ -17,5 +17,6 @@ public class Comment_ {
 	public static volatile SingularAttribute<Comment, Byte[]> avatar;
 	public static volatile SingularAttribute<Comment, Long> idPost;
 	public static volatile SingularAttribute<Comment, Long> idAccount;
+	public static volatile SingularAttribute<Comment, User> owner;
 	
 }

@@ -45,8 +45,8 @@ public class User {
 	@OneToMany( mappedBy="owner", fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Post> posts = new HashSet<Post>();
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Comment> comments = new HashSet<Comment>(0);
+	@OneToMany(mappedBy="owner", fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Comment> comments = new HashSet<Comment>();
 			
 	public Set<Post> getPosts() {
 		return this.posts;
